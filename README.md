@@ -1,7 +1,7 @@
 # init.lua
 neovim configuration file
 
-- package manager: [lazy.nvim][1]
+- plugin manager: [lazy.nvim][1]
 - base config template: [kickstart.nvim][2]
 
 [1]: https://github.com/folke/lazy.nvim
