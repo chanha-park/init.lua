@@ -2,7 +2,11 @@
 return {
     'stevearc/oil.nvim',
     opts = {
-        columns = {},
+        columns = {
+            'permissions',
+            'size',
+            'type',
+        },
         -- Keymaps in oil buffer. Can be any value that `vim.keymap.set` accepts OR a table of keymap
         -- options with a `callback` (e.g. { callback = function() ... end, desc = "", nowait = true })
         -- Additionally, if it is a string that matches "actions.<name>",
