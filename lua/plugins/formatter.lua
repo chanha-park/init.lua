@@ -65,6 +65,15 @@ return {
                     require('formatter.filetypes.python').autopep8,
                 },
 
+                asm = {
+                    function()
+                        return {
+                            exe = 'asmfmt',
+                            stdin = true,
+                        }
+                    end,
+                },
+
                 rust = {
                     -- Rustfmt
                     function()
