@@ -24,6 +24,7 @@ vim.keymap.set('n', '<leader>cd', ':lcd %:h<CR>', { silent = true })
 local open_terminal_split = function()
     vim.cmd([[
         vs
+        lcd %:p:h
         wincmd l
         terminal
     ]])
