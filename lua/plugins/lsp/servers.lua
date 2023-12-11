@@ -8,15 +8,15 @@
 --  define the property 'filetypes' to the map in question.
 
 return {
-    -- lua_ls = {
-    --     Lua = {
-    --         workspace = { checkThirdParty = false },
-    --         telemetry = { enable = false },
-    --         diagnostics = {
-    --             globals = {'vim'},
-    --         },
-    --     },
-    -- },
+    lua_ls = {
+        Lua = {
+            workspace = { checkThirdParty = false },
+            telemetry = { enable = false },
+            diagnostics = {
+                globals = { 'vim' },
+            },
+        },
+    },
 
     hls = {
         filetypes = {
