@@ -38,6 +38,6 @@ return {
             lualine_a = { 'tabs' },
             lualine_b = { 'buffers' },
         },
-        extensions = {},
+        extensions = { 'man', 'oil' },
     },
 }
