@@ -65,3 +65,6 @@ vim.opt.splitright = true
 vim.opt.termguicolors = true
 vim.g.netrw_bufsettings = 'noma nomod nu nobl nowrap ro rnu'
 -- vim.g.netrw_keep_dir = 0
+
+-- increment/decrement alphabet by Ctrl-a, Ctrl-x
+vim.opt.nrformats:append('alpha')
