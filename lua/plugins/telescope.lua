@@ -58,11 +58,14 @@ return {
         vim.keymap.set('n', '<leader>fd', function()
             telescope_builtin.lsp_document_symbols({
                 symbols = {
-                    'function',
-                    'method',
+                    'namespace',
+                    'class',
                     'struct',
                     'enum',
-                    'class',
+                    'function',
+                    'method',
+                    'field',
+                    'constructor',
                 },
             })
         end, { desc = '[F]ind [D]efinitions' })
@@ -92,6 +95,7 @@ return {
                     n = {
                         ['<C-u>'] = 'results_scrolling_up',
                         ['<C-d>'] = 'results_scrolling_down',
+                        ['dd'] = 'delete_buffer',
                     },
                 },
             },
