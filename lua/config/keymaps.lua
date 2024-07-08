@@ -37,26 +37,35 @@ vim.keymap.set(
     { desc = 'Open terminal in a split view' }
 )
 
--- Diagnostic keymaps
 vim.keymap.set(
     'n',
-    '[d',
-    vim.diagnostic.goto_prev,
-    { desc = 'Go to previous diagnostic message' }
+    '<leader>O',
+    vim.diagnostic.setloclist,
+    { desc = '[O]pen diagnostics list' }
 )
+
+vim.keymap.set('n', '<A-S-h>', '<C-W>>', { desc = 'Resize window Left' })
+vim.keymap.set('n', '<A-S-l>', '<C-W><', { desc = 'Resize window Right' })
+vim.keymap.set('n', '<A-S-k>', '<C-W>+', { desc = 'Resize window Up' })
+vim.keymap.set('n', '<A-S-j>', '<C-W>-', { desc = 'Resize window Down' })
+
 vim.keymap.set(
     'n',
-    ']d',
-    vim.diagnostic.goto_next,
-    { desc = 'Go to next diagnostic message' }
+    '<A-S-o>',
+    ':tab split<CR>',
+    { desc = 'Open current buffer in a new tab' }
 )
+
 vim.keymap.set(
-    'n',
-    '<leader>i',
-    vim.diagnostic.open_float,
-    { desc = 'Open floating diagnostic message' }
+    { 'n', 'i' },
+    '<MiddleMouse>',
+    '<Nop>',
+    { desc = 'Disable Middle Mouse Paste' }
 )
--- vim.keymap.set('n', '<leader>E', vim.diagnostic.setloclist, { desc = 'Open diagnostics list' })
+
+vim.keymap.set('v', 'g"', 'c""<ESC>P', { desc = 'Surround Double Quote' })
+vim.keymap.set('v', "g'", "c''<ESC>P", { desc = 'Surround Single Quote' })
+vim.keymap.set('v', 'g`', 'c``<ESC>P', { desc = 'Surround Backtick' })
 
 vim.api.nvim_create_user_command(
     'Scrollbind',
