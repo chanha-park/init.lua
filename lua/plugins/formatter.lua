@@ -47,13 +47,6 @@ return {
                     end,
                 },
 
-                html = { require('formatter.defaults.prettier') },
-
-                javascript = { require('formatter.defaults.prettier') },
-                javascriptreact = { require('formatter.defaults.prettier') },
-                typescript = { require('formatter.defaults.prettier') },
-                typescriptreact = { require('formatter.defaults.prettier') },
-
                 c = { require('formatter.defaults.clangformat') },
                 cpp = { require('formatter.defaults.clangformat') },
 

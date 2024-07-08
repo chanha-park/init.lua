@@ -31,40 +31,25 @@ return {
         },
     },
 
-    clangd = {},
+    clangd = {
+        cmd = { 'clangd', '--clang-tidy', '--completion-style=detailed' },
+    },
 
-    pyre = {},
+    -- pyre = {},
     pyright = {},
 
-    html = {},
-    cssls = {},
-    tailwindcss = {},
     rust_analyzer = {
         diagnostic = {
             enabled = true,
         },
     },
 
-    tsserver = {
-        format = { enable = false },
-    },
-    eslint = {
-        settings = {
-            format = { enable = true },
-            codeAction = {
-                disableRuleComment = { enable = false },
-            },
-            codeActionsOnSave = {
-                mode = 'all',
-            },
+    tblgen_lsp_server = {
+        cmd = {
+            'tblgen-lsp-server',
+            '--tablegen-compilation-database=tablegen_compile_commands.yml',
         },
-        -- on_attach = function(client, bufnr)
-        --     vim.api.nvim_create_autocmd('BufWritePre', {
-        --         buffer = bufnr,
-        --         command = 'EslintFixAll',
-        --     })
-        -- end
     },
 
-    prismals = {},
+    mlir_lsp_server = {},
 }
