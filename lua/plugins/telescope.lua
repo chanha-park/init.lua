@@ -65,7 +65,7 @@ return {
                     'class',
                 },
             })
-        end, { desc = '[F]ind [F]iles' })
+        end, { desc = '[F]ind [D]efinitions' })
         -- vim.keymap.set('n', '<leader>sh', telescope_builtin.help_tags, { desc = '[S]earch [H]elp' })
         -- vim.keymap.set('n', '<leader>sw', telescope_builtin.grep_string, { desc = '[S]earch current [W]ord' })
         vim.keymap.set(
