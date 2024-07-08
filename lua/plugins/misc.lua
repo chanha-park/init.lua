@@ -36,4 +36,5 @@ return {
         end,
         ft = 'haskell',
     },
+    { 'ionide/Ionide-vim' },
 }
