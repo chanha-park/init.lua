@@ -57,6 +57,8 @@ return {
                         -- You can use the capture groups defined in textobjects.scm
                         ['af'] = '@function.outer',
                         ['if'] = '@function.inner',
+                        ['aa'] = '@parameter.outer', -- mnemonic: argument
+                        ['ia'] = '@parameter.inner', -- mnemonic: argument
                         -- ["ac"] = "@class.outer",
                         -- you can optionally set descriptions to the mappings (used in the desc parameter of nvim_buf_set_keymap
                         -- ["ic"] = { query = "@class.inner", desc = "Select inner part of a class region" },
@@ -67,6 +69,16 @@ return {
                     --     ['@function.outer'] = 'V', -- linewise
                     --     ['@class.outer'] = '<c-v>', -- blockwise
                     -- },
+                },
+
+                swap = {
+                    enable = true,
+                    swap_next = {
+                        ['<leader>l'] = '@parameter.inner',
+                    },
+                    swap_previous = {
+                        ['<leader>h'] = '@parameter.inner',
+                    },
                 },
             },
         })
