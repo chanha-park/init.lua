@@ -72,3 +72,19 @@ vim.api.nvim_create_user_command(
     'windo set scrollbind!',
     { desc = 'scrollbind every window', force = false }
 )
+
+vim.keymap.set({ 'i', 's' }, '<A-i>', function()
+    if vim.snippet.active({ direction = 1 }) then
+        return '<cmd>lua vim.snippet.jump(1)<cr>'
+    else
+        return '<C-i>'
+    end
+end, { expr = true })
+
+vim.keymap.set({ 'i', 's' }, '<A-S-i>', function()
+    if vim.snippet.active({ direction = -1 }) then
+        return '<cmd>lua vim.snippet.jump(-1)<cr>'
+    else
+        return '<C-S-i>'
+    end
+end, { expr = true })
