@@ -1,4 +1,6 @@
-return function(_, bufnr)
+local methods = vim.lsp.protocol.Methods
+
+return function(client, bufnr)
     -- In this case, we create a func that lets us more easily define mappings specific
     -- for LSP related items. It sets the mode, buffer and description for us each time.
     local nmap = function(keys, func, desc)
@@ -17,37 +19,59 @@ return function(_, bufnr)
         vim.keymap.set('i', keys, func, { buffer = bufnr, desc = desc })
     end
 
-    nmap('<leader>rn', vim.lsp.buf.rename, '[R]e[n]ame')
-    nmap('<leader>I', function()
-        vim.lsp.buf.code_action({ context = { only = quickfix } })
-    end, '[C]ode [A]ction')
+    local telescope_builtin = require('telescope.builtin')
 
-    nmap('gd', vim.lsp.buf.definition, '[G]oto [D]efinition')
-    -- nmap('gD', vim.lsp.buf.declaration, '[G]oto [D]eclaration')
-    nmap('gD', vim.lsp.buf.type_definition, '[G]oto Type [D]efinition')
+    if not vim.fn.has('nvim-0.11') then
+        -- nvim stable
+        nmap('grn', vim.lsp.buf.rename, '[R]e[n]ame')
+        nmap('gra', function()
+            vim.lsp.buf.code_action({ context = { only = quickfix } })
+        end, '[C]ode [A]ction')
+        imap('<C-s>', vim.lsp.buf.signature_help, 'Signature Documentation')
+    else
+        -- nvim nightly
+        if client.supports_method(methods.textDocument_completion) then
+            vim.lsp.completion.enable(
+                true,
+                client.id,
+                bufnr,
+                { autotrigger = false }
+            )
+        end
+    end
+
+    nmap('<C-s>', vim.lsp.buf.signature_help, 'Signature Documentation')
+
+    -- use `telescope_builtin.lsp_*` instead of default lsp methods
     nmap(
-        'gr',
-        require('telescope.builtin').lsp_references,
-        '[G]oto [R]eferences'
+        'grr',
+        telescope_builtin.lsp_references,
+        '[G]oto [R]eferences by telescope'
     )
-    nmap('gI', vim.lsp.buf.implementation, '[G]oto [I]mplementation')
-    -- nmap('<leader>ds', require('telescope.builtin').lsp_document_symbols, '[D]ocument [S]ymbols')
-    -- nmap('<leader>ws', require('telescope.builtin').lsp_dynamic_workspace_symbols, '[W]orkspace [S]ymbols')
+    nmap(
+        'gd',
+        telescope_builtin.lsp_definitions,
+        '[G]oto [D]efinitions by telescope'
+    )
+    nmap(
+        'gD',
+        telescope_builtin.lsp_type_definitions,
+        '[G]oto Type [D]efinitions by telescope'
+    )
+    nmap(
+        'gI',
+        telescope_builtin.lsp_implementations,
+        '[G]oto [I]mplementations by telescope'
+    )
 
-    -- See `:help K` for why this keymap
-    -- nmap('K', vim.lsp.buf.hover, 'Hover Documentation')
-    nmap('<C-k>', vim.lsp.buf.signature_help, 'Signature Documentation')
-    imap('<A-k>', vim.lsp.buf.signature_help, 'Signature Documentation')
+    -- nmap('gd', vim.lsp.buf.definition, '[G]oto [D]efinitions')
+    -- nmap('gD', vim.lsp.buf.declaration, '[G]oto [D]eclaration')
+    -- nmap('gD', vim.lsp.buf.type_definition, '[G]oto Type [D]efinitions')
+    -- nmap('gI', vim.lsp.buf.implementation, '[G]oto [I]mplementation')
+
     nmap('<A-k>', function()
         vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())
     end, 'Toggle inlay hint')
-
-    -- Lesser used LSP functionality
-    -- nmap('<leader>wa', vim.lsp.buf.add_workspace_folder, '[W]orkspace [A]dd Folder')
-    -- nmap('<leader>wr', vim.lsp.buf.remove_workspace_folder, '[W]orkspace [R]emove Folder')
-    -- nmap('<leader>wl', function()
-    --   print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
-    -- end, '[W]orkspace [L]ist Folders')
 
     -- Create a command `:Format` local to the LSP buffer
     vim.api.nvim_buf_create_user_command(bufnr, 'Format', function(_)

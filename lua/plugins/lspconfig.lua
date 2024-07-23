@@ -13,18 +13,17 @@ return {
         local servers = require('plugins.lsp.servers')
 
         -- ref: https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md#cssls
-        --Enable (broadcasting) snippet capability for completion
+        --Enable snippet capability for completion
         local capabilities = vim.lsp.protocol.make_client_capabilities()
         capabilities.textDocument.completion.completionItem.snippetSupport =
             true
 
         for server, conf in pairs(servers) do
-            if conf['on_attach'] == nil then
-                conf['on_attach'] = on_attach
-            end
-            if conf['capabilities'] == nil then
-                conf['capabilities'] = capabilities
-            end
+            conf['on_attach'] = conf['on_attach'] or on_attach
+
+            -- if conf['capabilities'] == nil then
+            --     conf['capabilities'] = capabilities
+            -- end
             require('lspconfig')[server].setup(conf)
         end
 
