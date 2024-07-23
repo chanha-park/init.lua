@@ -32,8 +32,18 @@ return {
     },
 
     clangd = {
-        cmd = { 'clangd', '--clang-tidy', '--completion-style=detailed' },
+        cmd = {
+            'clangd',
+            '--clang-tidy',
+            '--completion-style=detailed',
+            '--function-arg-placeholders',
+            '--header-insertion=never',
+            '--enable-config',
+            '--pch-storage=disk',
+        },
     },
+
+    neocmake = {},
 
     -- pyre = {},
     pyright = {},
