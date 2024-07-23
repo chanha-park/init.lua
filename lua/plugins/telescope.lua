@@ -45,10 +45,16 @@ return {
 
         vim.keymap.set(
             'n',
-            '<leader><space>',
-            telescope_builtin.git_files,
-            { desc = 'Search [G]it [F]iles' }
+            '<leader>cc',
+            telescope_builtin.commands,
+            { desc = 'Search nvim [C]ommand mode [C]ommands' }
         )
+        -- vim.keymap.set(
+        --     'n',
+        --     '<leader><space>',
+        --     telescope_builtin.git_files,
+        --     { desc = 'Search [G]it [F]iles' }
+        -- )
         vim.keymap.set(
             'n',
             '<leader>ff',
@@ -68,7 +74,7 @@ return {
                     'constructor',
                 },
             })
-        end, { desc = '[F]ind [D]efinitions' })
+        end, { desc = '[F]ind [D]ocument symbols' })
         -- vim.keymap.set('n', '<leader>sh', telescope_builtin.help_tags, { desc = '[S]earch [H]elp' })
         -- vim.keymap.set('n', '<leader>sw', telescope_builtin.grep_string, { desc = '[S]earch current [W]ord' })
         vim.keymap.set(
