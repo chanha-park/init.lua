@@ -41,7 +41,7 @@ vim.keymap.set(
     'n',
     '<leader>O',
     vim.diagnostic.setloclist,
-    { desc = '[O]pen diagnostics list' }
+    { desc = '[O]pen diagnostics in location list' }
 )
 
 vim.keymap.set('n', '<A-S-h>', '<C-W>>', { desc = 'Resize window Left' })
@@ -75,16 +75,23 @@ vim.api.nvim_create_user_command(
 
 vim.keymap.set({ 'i', 's' }, '<A-i>', function()
     if vim.snippet.active({ direction = 1 }) then
-        return '<cmd>lua vim.snippet.jump(1)<cr>'
+        return '<cmd>lua vim.snippet.jump(1)<CR>'
     else
-        return '<C-i>'
+        return '<A-i>'
     end
 end, { expr = true })
 
 vim.keymap.set({ 'i', 's' }, '<A-S-i>', function()
     if vim.snippet.active({ direction = -1 }) then
-        return '<cmd>lua vim.snippet.jump(-1)<cr>'
+        return '<cmd>lua vim.snippet.jump(-1)<CR>'
     else
-        return '<C-S-i>'
+        return '<A-S-i>'
     end
 end, { expr = true })
+
+vim.keymap.set(
+    'n',
+    '<leader>oo',
+    ':Oil<CR>',
+    { desc = "open 'Oil' file browser" }
+)
