@@ -1,7 +1,7 @@
 return {
     {
         'sainnhe/sonokai',
-        priority = 1000,
+        lazy = true,
         config = function()
             vim.g.sonokai_style = 'espresso'
             vim.g.sonokai_disable_italic_comment = 1
@@ -46,13 +46,18 @@ return {
     { 'xero/miasma.nvim', lazy = true },
     {
         'ribru17/bamboo.nvim',
-        lazy = true,
+        lazy = false,
+        priority = 1000,
         opts = {
             style = 'vulgaris', -- 'vulgaris' (regular) / 'multiplex' (greener)
             code_style = {
                 conditionals = 'none',
             },
         },
+        config = function(_, opts)
+            require('bamboo').setup(opts)
+            require('bamboo').load()
+        end,
     },
     { 'projekt0n/caret.nvim', lazy = true },
 }

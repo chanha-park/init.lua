@@ -29,7 +29,7 @@ require('lazy').setup({
         version = false, -- always use the latest git commit
         -- version = "*", -- try installing the latest stable version for plugins that support semver
     },
-    install = { missing = true, colorscheme = { 'sonokai' } },
+    install = { missing = true, colorscheme = { 'bamboo' } },
     ui = {
         icons = {
             cmd = '⌘',
