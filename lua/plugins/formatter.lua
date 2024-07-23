@@ -49,6 +49,7 @@ return {
 
                 c = { require('formatter.defaults.clangformat') },
                 cpp = { require('formatter.defaults.clangformat') },
+                tablegen = { require('formatter.defaults.clangformat') },
 
                 haskell = {
                     function()
