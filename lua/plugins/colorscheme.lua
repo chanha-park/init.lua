@@ -22,7 +22,7 @@ return {
             },
         },
     },
-    { 'sainnhe/everforest', lazy = true },
+    { 'neanias/everforest-nvim', lazy = true },
     {
         'daschw/leaf.nvim',
         lazy = true,
