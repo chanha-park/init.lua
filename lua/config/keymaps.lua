@@ -17,6 +17,9 @@ vim.keymap.set(
     { expr = true, silent = true }
 )
 
+vim.keymap.set('n', 'n', 'nzz')
+vim.keymap.set('n', 'N', 'Nzz')
+
 vim.keymap.set('n', '<leader>dd', ':b#|bd #<CR>', { silent = true })
 
 vim.keymap.set('n', '<leader>cd', ':lcd %:h<CR>', { silent = true })
