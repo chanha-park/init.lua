@@ -39,7 +39,6 @@ return {
             '--function-arg-placeholders',
             '--header-insertion=never',
             '--enable-config',
-            '--pch-storage=disk',
         },
     },
 
