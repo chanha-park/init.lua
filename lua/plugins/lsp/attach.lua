@@ -24,9 +24,7 @@ return function(client, bufnr)
     if not vim.fn.has('nvim-0.11') then
         -- nvim stable
         nmap('grn', vim.lsp.buf.rename, '[R]e[n]ame')
-        nmap('gra', function()
-            vim.lsp.buf.code_action({ context = { only = quickfix } })
-        end, '[C]ode [A]ction')
+        nmap('gra', vim.lsp.buf.code_action, '[C]ode [A]ction')
         imap('<C-s>', vim.lsp.buf.signature_help, 'Signature Documentation')
     else
         -- nvim nightly
@@ -63,6 +61,7 @@ return function(client, bufnr)
         telescope_builtin.lsp_implementations,
         '[G]oto [I]mplementations by telescope'
     )
+    nmap('gH', vim.lsp.buf.typehierarchy, '[G]oto type [H]ierarchy')
 
     -- nmap('gd', vim.lsp.buf.definition, '[G]oto [D]efinitions')
     -- nmap('gD', vim.lsp.buf.declaration, '[G]oto [D]eclaration')
