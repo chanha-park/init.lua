@@ -16,7 +16,15 @@ return {
         -- See :help oil-actions for a list of all available actions
         keymaps = {
             ['<C-t>'] = false,
-            ['cd'] = 'actions.tcd',
+            ['cd'] = {
+                'actions.cd',
+                opts = { scope = 'win', silent = false },
+                desc = ':lcd to the current oil directory',
+            },
+            ['<leader>tt'] = {
+                'actions.open_terminal',
+                desc = 'Open a terminal in the current directory',
+            },
             ['`'] = false,
             ['~'] = false,
             ['g.'] = false,
