@@ -66,9 +66,13 @@ vim.keymap.set(
     { desc = 'Disable Middle Mouse Paste' }
 )
 
-vim.keymap.set('v', 'g"', 'c""<ESC>P', { desc = 'Surround Double Quote' })
-vim.keymap.set('v', "g'", "c''<ESC>P", { desc = 'Surround Single Quote' })
-vim.keymap.set('v', 'g`', 'c``<ESC>P', { desc = 'Surround Backtick' })
+vim.keymap.set('v', 'g"', 'c""<ESC>P', { desc = 'Surround by DoubleQuote' })
+vim.keymap.set('v', "g'", "c''<ESC>P", { desc = 'Surround by SingleQuote' })
+vim.keymap.set('v', 'g`', 'c``<ESC>P', { desc = 'Surround by Backtick' })
+vim.keymap.set('v', 'g(', 'c()<ESC>P', { desc = 'Surround by Parenthesis' })
+vim.keymap.set('v', 'g{', 'c{}<ESC>P', { desc = 'Surround by Brace' })
+vim.keymap.set('v', 'g[', 'c[]<ESC>P', { desc = 'Surround by SquareBracket' })
+vim.keymap.set('v', 'g<', 'c<><ESC>P', { desc = 'Surround by AngleBracket' })
 
 vim.api.nvim_create_user_command(
     'Scrollbind',
