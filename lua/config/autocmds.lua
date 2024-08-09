@@ -8,16 +8,6 @@ vim.api.nvim_create_autocmd('TextYankPost', {
     pattern = '*',
 })
 
-vim.api.nvim_create_autocmd('CompleteDone', {
-    callback = function()
-        if vim.fn.pumvisible() == 0 then
-            vim.cmd('silent! pclose')
-        end
-    end,
-    group = vim.api.nvim_create_augroup('ClosePopUpMenu', { clear = true }),
-    pattern = '*',
-})
-
 -- XXX: refer https://github.com/neovim/neovim/issues/20726
 vim.api.nvim_create_autocmd('TermOpen', {
     callback = function()
