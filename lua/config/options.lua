@@ -69,3 +69,13 @@ vim.opt.termguicolors = true
 
 -- increment/decrement alphabet by Ctrl-a, Ctrl-x
 vim.opt.nrformats:append('alpha')
+
+vim.opt.formatoptions:append('/')
+
+-- save undo history. cf) `:set undodir?`
+vim.opt.undofile = true
+
+-- vim.opt.spell = true
+-- vim.opt.spelllang = 'en_us'
+-- vim.opt.spelloptions = { 'camel', 'noplainbuffer' }
+-- vim.opt.spellsuggest = { 'fast' }
