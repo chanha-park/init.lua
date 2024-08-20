@@ -57,9 +57,7 @@ return {
                     end,
                 },
 
-                python = {
-                    require('formatter.filetypes.python').autopep8,
-                },
+                python = { require('formatter.filetypes.python').black },
 
                 asm = {
                     function()

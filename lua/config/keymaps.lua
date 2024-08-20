@@ -22,7 +22,7 @@ vim.keymap.set('n', 'N', 'Nzz')
 
 vim.keymap.set('n', '<leader>dd', ':b#|bd #<CR>', { silent = true })
 
-vim.keymap.set('n', '<leader>cd', ':lcd %:h<CR>', { silent = true })
+-- vim.keymap.set('n', '<leader>cd', ':lcd %:h<CR>', { silent = true })
 
 local open_terminal_split = function()
     vim.cmd([[
