@@ -24,11 +24,9 @@ vim.keymap.set('n', '<leader>dd', ':b#|bd #<CR>', { silent = true })
 
 -- vim.keymap.set('n', '<leader>cd', ':lcd %:h<CR>', { silent = true })
 
-local open_terminal_split = function()
+local open_terminal_lcd = function()
     vim.cmd([[
-        vs
         lcd %:p:h
-        wincmd l
         terminal
     ]])
 end
@@ -36,8 +34,8 @@ end
 vim.keymap.set(
     'n',
     '<leader>tt',
-    open_terminal_split,
-    { desc = 'Open terminal in a split view' }
+    open_terminal_lcd,
+    { desc = 'Open terminal in the directory of current file' }
 )
 
 vim.keymap.set(
