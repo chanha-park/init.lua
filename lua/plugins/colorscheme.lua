@@ -53,6 +53,9 @@ return {
             code_style = {
                 conditionals = 'none',
             },
+            highlights = {
+                WinSeparator = { fg = '$green' },
+            },
         },
         config = function(_, opts)
             require('bamboo').setup(opts)
