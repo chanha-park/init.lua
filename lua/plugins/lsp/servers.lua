@@ -67,4 +67,6 @@ return {
     },
 
     mlir_lsp_server = {},
+
+    ts_ls = {},
 }
