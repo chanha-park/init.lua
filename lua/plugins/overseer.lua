@@ -23,10 +23,13 @@ return {
                 -- },
                 my_cmake_default = {
                     {
+                        'on_complete_notify',
+                        system = 'unfocused',
+                    },
+                    {
                         'open_output',
                         on_complete = 'failure',
                         on_result = 'if_diagnostics',
-                        on_start = 'always',
                     },
                     {
                         'on_output_quickfix',
