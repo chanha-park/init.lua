@@ -35,15 +35,15 @@ return {
                 disable = isdisabled,
             },
             incremental_selection = {
-                enable = true,
-                disable = isdisabled,
-
-                keymaps = {
-                    init_selection = '<leader>n',
-                    node_incremental = '<leader>n',
-                    scope_incremental = '<leader>rc',
-                    node_decremental = '<leader>m',
-                },
+                enable = false, -- rarely used.
+                -- disable = isdisabled,
+                --
+                -- keymaps = {
+                --     init_selection = '<leader>n',
+                --     node_incremental = '<leader>n',
+                --     scope_incremental = '<leader>rc',
+                --     node_decremental = '<leader>m',
+                -- },
             },
             textobjects = {
                 select = {
@@ -59,6 +59,7 @@ return {
                         ['if'] = '@function.inner',
                         ['aa'] = '@parameter.outer', -- mnemonic: argument
                         ['ia'] = '@parameter.inner', -- mnemonic: argument
+                        ['ac'] = '@comment.outer',
                         -- ["ac"] = "@class.outer",
                         -- you can optionally set descriptions to the mappings (used in the desc parameter of nvim_buf_set_keymap
                         -- ["ic"] = { query = "@class.inner", desc = "Select inner part of a class region" },
