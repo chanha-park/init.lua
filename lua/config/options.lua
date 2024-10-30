@@ -48,10 +48,10 @@ vim.opt.signcolumn = 'number'
 vim.opt.path:append('**')
 vim.opt.wildmenu = true
 vim.opt.tags:append('tags;~')
-vim.opt.laststatus = 2
+vim.opt.laststatus = 3
 
 -- Set completeopt to have a better completion experience
-vim.opt.completeopt = { 'menu', 'popup', 'menuone', 'fuzzy' }
+vim.opt.completeopt = { 'menu', 'popup', 'menuone' }
 
 vim.opt.list = true
 vim.opt.listchars = { eol = '$', tab = '|.', trail = '-' }
