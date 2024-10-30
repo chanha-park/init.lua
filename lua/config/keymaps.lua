@@ -20,7 +20,7 @@ vim.keymap.set({ 'n', 'v' }, '<Space>', '<Nop>', { silent = true })
 vim.keymap.set('n', 'n', 'nzz')
 vim.keymap.set('n', 'N', 'Nzz')
 
-vim.keymap.set('n', '<leader>dd', ':b#|bd #<CR>', { silent = true })
+vim.keymap.set('n', '<leader>dd', ':bn|bd #<CR>', { silent = true })
 
 -- vim.keymap.set('n', '<leader>cd', ':lcd %:h<CR>', { silent = true })
 
@@ -28,6 +28,7 @@ local open_terminal_lcd = function()
     vim.cmd([[
         lcd %:p:h
         terminal
+        startinsert
     ]])
 end
 
@@ -71,6 +72,12 @@ vim.keymap.set('v', 'g(', 'c()<ESC>P', { desc = 'Surround by Parenthesis' })
 vim.keymap.set('v', 'g{', 'c{}<ESC>P', { desc = 'Surround by Brace' })
 vim.keymap.set('v', 'g[', 'c[]<ESC>P', { desc = 'Surround by SquareBracket' })
 vim.keymap.set('v', 'g<', 'c<><ESC>P', { desc = 'Surround by AngleBracket' })
+vim.keymap.set(
+    'n',
+    'gcq',
+    ':s/[<>]/"/g<CR>',
+    { desc = 'Change angle bracket to double quote' }
+)
 
 vim.api.nvim_create_user_command(
     'Scrollbind',
