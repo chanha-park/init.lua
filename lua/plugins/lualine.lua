@@ -21,6 +21,7 @@ return {
                     shorting_target = 40,
                 },
                 '%B',
+                'overseer',
             },
             lualine_x = { 'encoding', 'filetype', 'fileformat' },
             lualine_y = { 'location' },

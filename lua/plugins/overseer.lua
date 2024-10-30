@@ -3,9 +3,21 @@ return {
     opts = function()
         vim.keymap.set(
             'n',
-            '<leader>osr',
+            '<C-k><C-f>',
             ':OverseerRun<CR>',
             { desc = 'run :OverseerRun command' }
+        )
+        vim.keymap.set(
+            'n',
+            '<C-k><C-r>',
+            ':OverseerQuickAction restart<CR>',
+            { desc = 'run :OverseerQuickAction restart command' }
+        )
+        vim.keymap.set(
+            'n',
+            '<C-k><C-t>',
+            ':OverseerToggle!<CR>',
+            { desc = 'run :OverseerToggle command' }
         )
         return {
             templates = { 'builtin', 'cmake.build', 'cmake.generate' },
@@ -30,6 +42,7 @@ return {
                         'open_output',
                         on_complete = 'failure',
                         on_result = 'if_diagnostics',
+                        -- on_start = 'always',
                     },
                     {
                         'on_output_quickfix',
