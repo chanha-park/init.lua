@@ -34,6 +34,8 @@ vim.opt.showmatch = true
 vim.opt.grepprg = 'rg --vimgrep'
 -- vim.opt.matchpairs:append { '<:>' }
 
+vim.opt.jumpoptions = { 'clean', 'stack' }
+
 vim.opt.mouse = 'a'
 vim.opt.clipboard = 'unnamedplus'
 
