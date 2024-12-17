@@ -26,7 +26,12 @@ return {
         local telescope_builtin = require('telescope.builtin')
 
         -- See `:help telescope.builtin`
-        -- vim.keymap.set('n', '<leader>?', telescope_builtin.oldfiles, { desc = '[?] Find recently opened files' })
+        vim.keymap.set(
+            'n',
+            '<leader>fo',
+            telescope_builtin.oldfiles,
+            { desc = '[F]ind [O]ldfiles' }
+        )
         vim.keymap.set(
             'n',
             '<leader>fb',
@@ -43,18 +48,18 @@ return {
             )
         end, { desc = '[/] Fuzzily search in current buffer' })
 
-        vim.keymap.set(
-            'n',
-            '<leader>cc',
-            telescope_builtin.commands,
-            { desc = 'Search nvim [C]ommand mode [C]ommands' }
-        )
         -- vim.keymap.set(
         --     'n',
-        --     '<leader><space>',
-        --     telescope_builtin.git_files,
-        --     { desc = 'Search [G]it [F]iles' }
+        --     '<leader>cc',
+        --     telescope_builtin.commands,
+        --     { desc = 'Search nvim [C]ommand mode [C]ommands' }
         -- )
+        vim.keymap.set(
+            'n',
+            '<leader>fq',
+            telescope_builtin.quickfix,
+            { desc = '[F]ind [Q]uickFix' }
+        )
         vim.keymap.set(
             'n',
             '<leader>ff',
@@ -62,28 +67,28 @@ return {
             { desc = '[F]ind [F]iles' }
         )
         vim.keymap.set('n', '<leader>fd', function()
-            telescope_builtin.lsp_document_symbols({
-                symbols = {
-                    'namespace',
-                    'class',
-                    'struct',
-                    'enum',
-                    'function',
-                    'method',
-                    'field',
-                    'constructor',
-                },
+            telescope_builtin.diagnostics({
+                -- severity = vim.diagnostic.severity.ERROR,
             })
-        end, { desc = '[F]ind [D]ocument symbols' })
-        -- vim.keymap.set('n', '<leader>sh', telescope_builtin.help_tags, { desc = '[S]earch [H]elp' })
-        -- vim.keymap.set('n', '<leader>sw', telescope_builtin.grep_string, { desc = '[S]earch current [W]ord' })
+        end, { desc = '[F]ind [D]ignostics' })
+        vim.keymap.set(
+            'n',
+            '<leader>fw',
+            telescope_builtin.grep_string,
+            { desc = '[F]ind current [W]ord' }
+        )
         vim.keymap.set(
             'n',
             '<leader>fg',
             telescope_builtin.live_grep,
             { desc = '[F]ind [G]rep' }
         )
-        -- vim.keymap.set('n', '<leader>sd', telescope_builtin.diagnostics, { desc = '[S]earch [D]iagnostics' })
+        vim.keymap.set(
+            'n',
+            '<leader>fj',
+            telescope_builtin.jumplist,
+            { desc = '[F]ind [j]umplist' }
+        )
 
         return {
             defaults = {

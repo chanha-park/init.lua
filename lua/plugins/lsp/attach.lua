@@ -61,6 +61,22 @@ return function(client, bufnr)
         telescope_builtin.lsp_implementations,
         '[G]oto [I]mplementations by telescope'
     )
+
+    nmap('gO', function()
+        telescope_builtin.lsp_document_symbols({
+            symbols = {
+                'namespace',
+                'class',
+                'struct',
+                'enum',
+                'function',
+                'method',
+                'field',
+                'constructor',
+            },
+        })
+    end, '[G]oto [I]mplementations by telescope')
+
     nmap('gH', vim.lsp.buf.typehierarchy, '[G]oto type [H]ierarchy')
 
     -- nmap('gd', vim.lsp.buf.definition, '[G]oto [D]efinitions')
