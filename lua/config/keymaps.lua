@@ -46,8 +46,8 @@ vim.keymap.set(
     { desc = '[O]pen diagnostics in location list' }
 )
 
-vim.keymap.set('n', '<A-S-h>', '<C-W>>', { desc = 'Resize window Left' })
-vim.keymap.set('n', '<A-S-l>', '<C-W><', { desc = 'Resize window Right' })
+vim.keymap.set('n', '<A-S-h>', '<C-W><', { desc = 'Resize window Left' })
+vim.keymap.set('n', '<A-S-l>', '<C-W>>', { desc = 'Resize window Right' })
 vim.keymap.set('n', '<A-S-k>', '<C-W>+', { desc = 'Resize window Up' })
 vim.keymap.set('n', '<A-S-j>', '<C-W>-', { desc = 'Resize window Down' })
 
@@ -84,22 +84,6 @@ vim.api.nvim_create_user_command(
     'windo set scrollbind!',
     { desc = 'scrollbind every window', force = false }
 )
-
-vim.keymap.set({ 'i', 's' }, '<A-i>', function()
-    if vim.snippet.active({ direction = 1 }) then
-        return '<cmd>lua vim.snippet.jump(1)<CR>'
-    else
-        return '<A-i>'
-    end
-end, { expr = true })
-
-vim.keymap.set({ 'i', 's' }, '<A-S-i>', function()
-    if vim.snippet.active({ direction = -1 }) then
-        return '<cmd>lua vim.snippet.jump(-1)<CR>'
-    else
-        return '<A-S-i>'
-    end
-end, { expr = true })
 
 vim.keymap.set(
     'n',
