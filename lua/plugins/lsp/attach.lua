@@ -84,9 +84,37 @@ return function(client, bufnr)
     -- nmap('gD', vim.lsp.buf.type_definition, '[G]oto Type [D]efinitions')
     -- nmap('gI', vim.lsp.buf.implementation, '[G]oto [I]mplementation')
 
-    nmap('<A-k>', function()
+    nmap('<A-i>', function()
         vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())
     end, 'Toggle inlay hint')
+
+    nmap('<A-v>', function()
+        vim.diagnostic.config({
+            virtual_lines = not vim.diagnostic.config().virtual_lines,
+        })
+    end, 'Toggle virtual lines')
+
+    vim.diagnostic.config({
+        virtual_text = {
+            source = 'if_many',
+            current_line = true,
+        },
+        signs = {
+            text = {
+                [vim.diagnostic.severity.ERROR] = '',
+                [vim.diagnostic.severity.WARN] = '',
+                [vim.diagnostic.severity.HINT] = '',
+                [vim.diagnostic.severity.INFO] = '',
+            },
+            numhl = {
+                [vim.diagnostic.severity.WARN] = 'WarningMsg',
+                [vim.diagnostic.severity.ERROR] = 'ErrorMsg',
+                [vim.diagnostic.severity.INFO] = 'DiagnosticInfo',
+                [vim.diagnostic.severity.HINT] = 'DiagnosticHint',
+            },
+        },
+        severity_sort = true,
+    })
 
     -- Create a command `:Format` local to the LSP buffer
     vim.api.nvim_buf_create_user_command(bufnr, 'Format', function(_)
