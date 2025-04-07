@@ -13,11 +13,12 @@ vim.opt.number = true
 vim.opt.relativenumber = true
 vim.opt.pumblend = 10
 vim.opt.pumheight = 10
+vim.opt.winborder = 'rounded'
 vim.opt.ruler = true
 vim.opt.title = true
 vim.opt.cursorline = true
 vim.opt.colorcolumn = '80'
-vim.opt.signcolumn = 'number'
+vim.opt.signcolumn = 'auto'
 
 vim.opt.breakindent = true
 vim.opt.tabstop = 4
@@ -40,8 +41,6 @@ vim.opt.mouse = 'a'
 vim.opt.clipboard = 'unnamedplus'
 
 vim.opt.wrap = false
-
-vim.opt.signcolumn = 'number'
 
 -- Decrease update time
 -- vim.opt.updatetime = 250
