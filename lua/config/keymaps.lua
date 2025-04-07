@@ -39,12 +39,12 @@ vim.keymap.set(
     { desc = 'Open terminal in the directory of current file' }
 )
 
-vim.keymap.set(
-    'n',
-    '<leader>O',
-    vim.diagnostic.setloclist,
-    { desc = '[O]pen diagnostics in location list' }
-)
+-- vim.keymap.set(
+--     'n',
+--     '<leader>O',
+--     vim.diagnostic.setloclist,
+--     { desc = '[O]pen diagnostics in location list' }
+-- )
 
 vim.keymap.set('n', '<A-S-h>', '<C-W><', { desc = 'Resize window Left' })
 vim.keymap.set('n', '<A-S-l>', '<C-W>>', { desc = 'Resize window Right' })
