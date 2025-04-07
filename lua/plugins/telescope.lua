@@ -1,4 +1,8 @@
 -- Fuzzy Finder (files, lsp, etc)
+
+-- https://github.com/nvim-telescope/telescope.nvim/wiki/Configuration-Recipes#falling-back-to-find_files-if-git_files-cant-find-a-git-directory
+local is_inside_work_tree = {}
+
 return {
     'nvim-telescope/telescope.nvim',
     branch = '0.1.x',
@@ -60,12 +64,23 @@ return {
             telescope_builtin.quickfix,
             { desc = '[F]ind [Q]uickFix' }
         )
-        vim.keymap.set(
-            'n',
-            '<leader>ff',
-            telescope_builtin.find_files,
-            { desc = '[F]ind [F]iles' }
-        )
+        vim.keymap.set('n', '<leader>ff', function()
+            local cwd = vim.fn.getcwd()
+            if is_inside_work_tree[cwd] == nil then
+                if pcall(telescope_builtin.git_files) then
+                    is_inside_work_tree[cwd] = true
+                    return
+                else
+                    is_inside_work_tree[cwd] = false
+                end
+            end
+
+            if is_inside_work_tree[cwd] then
+                telescope_builtin.git_files({ show_untracked = true })
+            else
+                telescope_builtin.find_files()
+            end
+        end, { desc = '[F]ind [F]iles' })
         vim.keymap.set('n', '<leader>fd', function()
             telescope_builtin.diagnostics({
                 -- severity = vim.diagnostic.severity.ERROR,
