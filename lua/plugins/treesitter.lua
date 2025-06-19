@@ -35,15 +35,15 @@ return {
                 disable = isdisabled,
             },
             incremental_selection = {
-                enable = false, -- rarely used.
-                -- disable = isdisabled,
-                --
-                -- keymaps = {
-                --     init_selection = '<leader>n',
-                --     node_incremental = '<leader>n',
-                --     scope_incremental = '<leader>rc',
-                --     node_decremental = '<leader>m',
-                -- },
+                enable = true,
+                disable = isdisabled,
+
+                keymaps = {
+                    init_selection = false,
+                    node_incremental = '<C-n>',
+                    scope_incremental = false,
+                    node_decremental = '<C-p>',
+                },
             },
             textobjects = {
                 select = {
