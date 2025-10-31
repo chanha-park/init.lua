@@ -108,15 +108,17 @@ return {
         return {
             defaults = {
                 path_display = {
-                    shorten = {
-                        len = 3,
-                        exclude = { -2, -1 },
-                    },
+                    -- shorten = {
+                    --     len = 3,
+                    --     exclude = { -2, -1 },
+                    -- },
                 },
                 mappings = {
                     i = {
                         ['<C-u>'] = false,
                         ['<C-d>'] = false,
+                        ['<C-e>'] = 'preview_scrolling_down',
+                        ['<C-y>'] = 'preview_scrolling_up',
                     },
                     n = {
                         ['<C-u>'] = 'results_scrolling_up',
