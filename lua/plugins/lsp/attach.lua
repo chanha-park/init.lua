@@ -52,9 +52,9 @@ return function(client, bufnr)
         '[G]oto [D]efinitions by telescope'
     )
     nmap(
-        'gD',
+        'grt',
         telescope_builtin.lsp_type_definitions,
-        '[G]oto Type [D]efinitions by telescope'
+        '[G]oto Type Definitions by telescope'
     )
     nmap(
         'gI',
@@ -80,8 +80,6 @@ return function(client, bufnr)
     nmap('gH', vim.lsp.buf.typehierarchy, '[G]oto type [H]ierarchy')
 
     -- nmap('gd', vim.lsp.buf.definition, '[G]oto [D]efinitions')
-    -- nmap('gD', vim.lsp.buf.declaration, '[G]oto [D]eclaration')
-    -- nmap('gD', vim.lsp.buf.type_definition, '[G]oto Type [D]efinitions')
     -- nmap('gI', vim.lsp.buf.implementation, '[G]oto [I]mplementation')
 
     nmap('<A-i>', function()
@@ -93,6 +91,22 @@ return function(client, bufnr)
             virtual_lines = not vim.diagnostic.config().virtual_lines,
         })
     end, 'Toggle virtual lines')
+
+    nmap('[D', function()
+        vim.diagnostic.jump({
+            count = -vim.v.count1,
+            severity = vim.diagnostic.severity.ERROR,
+            wrap = false,
+        })
+    end, 'Jump to the previous Error diagnostic')
+
+    nmap(']D', function()
+        vim.diagnostic.jump({
+            count = vim.v.count1,
+            severity = vim.diagnostic.severity.ERROR,
+            wrap = false,
+        })
+    end, 'Jump to the next Error diagnostic')
 
     vim.diagnostic.config({
         virtual_text = {
