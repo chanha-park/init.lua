@@ -61,11 +61,6 @@ return function(client, bufnr)
         })
     end, '[G]oto [I]mplementations by telescope')
 
-    nmap('gH', vim.lsp.buf.typehierarchy, '[G]oto type [H]ierarchy')
-
-    -- nmap('gd', vim.lsp.buf.definition, '[G]oto [D]efinitions')
-    -- nmap('gI', vim.lsp.buf.implementation, '[G]oto [I]mplementation')
-
     nmap('<A-i>', function()
         vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())
     end, 'Toggle inlay hint')
