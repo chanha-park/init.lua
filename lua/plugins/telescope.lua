@@ -76,7 +76,10 @@ return {
             end
 
             if is_inside_work_tree[cwd] then
-                telescope_builtin.git_files({ show_untracked = true })
+                telescope_builtin.git_files({
+                    show_untracked = false,
+                    recurse_submodules = true,
+                })
             else
                 telescope_builtin.find_files()
             end
