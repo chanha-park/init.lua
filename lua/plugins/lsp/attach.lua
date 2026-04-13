@@ -11,31 +11,15 @@ return function(client, bufnr)
         vim.keymap.set('n', keys, func, { buffer = bufnr, desc = desc })
     end
 
-    local imap = function(keys, func, desc)
-        if desc then
-            desc = 'LSP: ' .. desc
-        end
-
-        vim.keymap.set('i', keys, func, { buffer = bufnr, desc = desc })
-    end
-
     local telescope_builtin = require('telescope.builtin')
 
-    if not vim.fn.has('nvim-0.11') then
-        -- nvim stable
-        nmap('grn', vim.lsp.buf.rename, '[R]e[n]ame')
-        nmap('gra', vim.lsp.buf.code_action, '[C]ode [A]ction')
-        imap('<C-s>', vim.lsp.buf.signature_help, 'Signature Documentation')
-    else
-        -- nvim nightly
-        if client.supports_method(methods.textDocument_completion) then
-            vim.lsp.completion.enable(
-                true,
-                client.id,
-                bufnr,
-                { autotrigger = false }
-            )
-        end
+    if client:supports_method(methods.textDocument_completion) then
+        vim.lsp.completion.enable(
+            true,
+            client.id,
+            bufnr,
+            { autotrigger = false }
+        )
     end
 
     nmap('<C-s>', vim.lsp.buf.signature_help, 'Signature Documentation')
