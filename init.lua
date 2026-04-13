@@ -4,3 +4,5 @@ require('config.autocmds')
 require('config.lazy')
 
 vim.cmd('packadd cfilter')
+
+require('vim._core.ui2').enable({})
