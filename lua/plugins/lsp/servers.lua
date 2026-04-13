@@ -8,7 +8,7 @@
 --  define the property 'filetypes' to the map in question.
 
 local global_tblgen_compile_commands =
-    vim.fs.normalize('~/llvm/llvm-build/tablegen_compile_commands.yml')
+    vim.fs.normalize('~/llvm/llvm-build-20/tablegen_compile_commands.yml')
 
 return {
     lua_ls = {
