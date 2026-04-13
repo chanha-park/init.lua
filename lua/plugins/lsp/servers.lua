@@ -46,6 +46,10 @@ return {
             '--enable-config',
             '--malloc-trim',
         },
+
+        root_markers = {
+            'compile_commands.json',
+        },
     },
 
     -- pyre = {},
