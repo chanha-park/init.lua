@@ -34,6 +34,8 @@ return {
         },
     },
 
+    neocmake = {},
+
     clangd = {
         cmd = {
             'clangd',
@@ -48,6 +50,8 @@ return {
 
     -- pyre = {},
     pyright = {},
+
+    bashls = {},
 
     rust_analyzer = {
         diagnostic = {
@@ -67,4 +71,6 @@ return {
     mlir_lsp_server = {},
 
     ts_ls = {},
+
+    zls = {},
 }
